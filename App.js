@@ -1,5 +1,15 @@
+//Drawer
+import 'react-native-gesture-handler';
+import { NavigationContainer} from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+//React-Native components
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+
+const Drawer = createDrawerNavigator(); {
+
+}
 
 export default function App() {
   return (
