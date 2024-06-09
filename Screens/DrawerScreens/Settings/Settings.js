@@ -2,20 +2,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-const RegisterWorkers = () => {
+const Settings = () => {
     return(
         <View Style={styles.container}>
-            <Text style={styles.text}> Workers Screen</Text>
+            <Text style={styles.text}> Settings Screen</Text>
         </View>
     );
 }
 
-export default RegisterWorkers;
+export default Settings;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

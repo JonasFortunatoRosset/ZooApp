@@ -2,15 +2,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-const RegisterWorkers = () => {
+const RegisterFoods = () => {
     return(
         <View Style={styles.container}>
-            <Text style={styles.text}> Workers Screen</Text>
+            <Text style={styles.text}> Foods Screen</Text>
         </View>
     );
 }
 
-export default RegisterWorkers;
+export default RegisterFoods;
 
 const styles = StyleSheet.create({
   container: {
