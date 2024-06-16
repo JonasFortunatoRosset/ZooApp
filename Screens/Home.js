@@ -2,17 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 
 // Importar as imagens
-import elefante from '../../assets/Carrossel/elefante.jpg';
-import lion from '../../assets/Carrossel/lion.jpg';
-import girafa from '../../assets/Carrossel/girafa.jpg';
-import hipo from '../../assets/Carrossel/hipo.jpeg';
-import zebra from '../../assets/Carrossel/zebra.jpg';
+import elefante from '../assets/Carrossel/elefante.jpg';
+import lion from '../assets/Carrossel/lion.jpg';
+import girafa from '../assets/Carrossel/girafa.jpg';
+import hipo from '../assets/Carrossel/hipo.jpeg';
+import zebra from '../assets/Carrossel/zebra.jpg';
 
 const animais = [
-  {
-    imagem: elefante,
-    descricao: 'Os elefantes são os maiores animais terrestres do mundo, conhecidos por sua inteligência, memória e laços sociais complexos.',
-  },
   {
     imagem: lion,
     descricao: 'Os leões são felinos majestosos que vivem em grupos sociais complexos chamados bandos, conhecidos por sua força e rugido poderoso.',
@@ -28,6 +24,10 @@ const animais = [
   {
     imagem: zebra,
     descricao: 'As zebras são equinos africanos conhecidos por suas listras pretas e brancas distintas, que se acredita ajudarem na camuflagem e na regulação da temperatura corporal.',
+  },
+  {
+    imagem: elefante,
+    descricao: 'Os elefantes são os maiores animais terrestres do mundo, conhecidos por sua inteligência, memória e laços sociais complexos.',
   },
 ];
 
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
   },
   imagem: {
-    width: 300,
-    height: 300,
+    width: '80%',
+    height: 400,
     borderRadius: 10,
     marginBottom: 20,
   },

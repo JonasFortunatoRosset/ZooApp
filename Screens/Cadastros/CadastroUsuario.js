@@ -64,7 +64,7 @@ export default function CadastroUsuario() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0', // cor de fundo lightgreen
+    backgroundColor: '#f2f2f2', // cor de fundo
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,

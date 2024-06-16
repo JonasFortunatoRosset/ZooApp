@@ -41,7 +41,7 @@ export default function Login({ navigation }) {
             <TouchableOpacity style={styles.logbutton} onPress={submit}>
                 <Text style={styles.txtbutton}>Login</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.logbutton} onPress={() => navigation.navigate('RegisterUsers')}>
+            <TouchableOpacity style={styles.logbutton} onPress={() => navigation.navigate('CadastroUsuario')}>
                 <Text style={styles.txtbutton}>Cadastrar Usuário</Text>
             </TouchableOpacity>
         </View>
