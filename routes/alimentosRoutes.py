@@ -1,4 +1,4 @@
-from controllers.alimentosController import Alimentos
+from controllers.alimentosController import alimentosController
 
-def ingressos(app):
-    app.route('/ingressos', method=['POST','GET'])(Alimentos)
+def alimentos(app):
+    app.route('/alimentos', method=['POST'])(alimentosController)

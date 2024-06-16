@@ -1,4 +1,4 @@
-from controllers.funcionariosController import Funcionarios
+from controllers.funcionariosController import funcionariosController
 
 def funcionarios(app):
-    app.route('/funcionarios', method=['POST', 'GET'])(Funcionarios)
+    app.route('/funcionarios', method=['POST'])(funcionariosController)

@@ -1,4 +1,4 @@
-from controllers.fornecedoresController import Fornecedores
+from controllers.fornecedoresController import fornecedoresController
 
 def fornecedores(app):
-    app.route('/fornecedores', method=['POST', 'GET'])(Fornecedores)
+    app.route('/fornecedores', method=['POST'])(fornecedoresController)

@@ -13,9 +13,9 @@ class Alimentos(db.Model):
     
     codigo = db.Column(db.Integer, primary_key=True, nullable=True, unique=True)
     nome = db.Column(db.String(100))
-    pesoLote = db.Column(db.Float(10,2))
+    pesoLote = db.Column(db.Float)
     dataValidade = db.Column(db.String(10))
-    codfornecedor = db.Column(db.Integer(5))
+    codfornecedor = db.Column(db.Integer)
 
     def __init__(self, codigo,nome,pesoLote,dataValidade,codfornecedor):
         self.codigo= codigo
