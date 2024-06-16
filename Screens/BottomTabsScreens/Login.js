@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { useState } from 'react';
 
+import RegisterUsers from './Register/RegisterUsers';
+
 export default function Login({ navigation }) {
     
     const[username, setUsername] = useState('');
@@ -38,8 +40,11 @@ export default function Login({ navigation }) {
                 value={password}
                 onChangeText={setPassword}/>
 
-            <TouchableOpacity style={styles.button} onPress={submit}>
-                <Text style={styles.txtbutton}>Entrar</Text>
+            <TouchableOpacity style={styles.logbutton} onPress={submit}>
+                <Text style={styles.txtbutton}>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.logbutton} onPress={() => navigation.navigate('RegisterUsers')}>
+                <Text style={styles.txtbutton}>Cadastrar Usuário</Text>
             </TouchableOpacity>
         </View>
   );
@@ -69,7 +74,16 @@ const styles = StyleSheet.create({
     color: '#333',
     fontFamily: 'Avenir-Roman'
   },
-  button: {
+  logbutton: {
+    width: '80%',
+    height: 50,
+    backgroundColor: '#4caf50', 
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  cadbutton: {
     width: '80%',
     height: 50,
     backgroundColor: '#4caf50', 

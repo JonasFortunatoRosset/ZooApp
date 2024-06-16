@@ -31,13 +31,13 @@ const animais = [
   },
 ];
 
-export default function Feed({ navigation }) {
+export default function Tickets({ navigation }) {
   const [animalAtual, setAnimalAtual] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setAnimalAtual((animalAtual + 1) % animais.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [animalAtual]);
 
