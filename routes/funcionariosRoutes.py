@@ -1,4 +1,4 @@
 from controllers.funcionariosController import funcionariosController
 
 def funcionarios(app):
-    app.route('/funcionarios', method=['POST'])(funcionariosController)
+    app.route('/funcionarios', methods=['POST'])(funcionariosController)
