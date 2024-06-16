@@ -31,7 +31,7 @@ const animais = [
   },
 ];
 
-export default function Tickets({ navigation }) {
+export default function Ingressos({ navigation }) {
   const [animalAtual, setAnimalAtual] = useState(0);
 
   useEffect(() => {

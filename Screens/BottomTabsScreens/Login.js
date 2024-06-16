@@ -1,8 +1,6 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { useState } from 'react';
 
-import RegisterUsers from './Register/RegisterUsers';
-
 export default function Login({ navigation }) {
     
     const[username, setUsername] = useState('');

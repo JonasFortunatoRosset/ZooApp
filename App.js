@@ -4,11 +4,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 //import Login from "./Screens/StackScreens/Login";
 import HomeScreen from "./Screens/BottomTabsScreens/Home";
-import Tickets from "./Screens/BottomTabsScreens/Tickets";
+import Ingressos from "./Screens/BottomTabsScreens/Ingressos";
 import Login from "./Screens/BottomTabsScreens/Login";
 
 //Users
-import RegisterUsers from "./Screens/BottomTabsScreens/Register/RegisterUsers";
+import CadastroUsuario from "./Screens/BottomTabsScreens/Register/CadastroUsuario";
 
 //icons
 import { AntDesign } from '@expo/vector-icons';
@@ -17,6 +17,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 //Axios
 import axios from "axios";
+import CadastroUsuario from "./Screens/BottomTabsScreens/Register/CadastroUsuario";
 
 function HomeTabs(){
   const Tab = createBottomTabNavigator();
@@ -35,8 +36,8 @@ function HomeTabs(){
             ),
           }}
         />
-        <Tab.Screen name="Tickets"
-          component={Tickets}
+        <Tab.Screen name="Ingressos"
+          component={Ingressos}
           options={{
             headerShown: false,
             tabBarShowLabel: true,
@@ -67,9 +68,8 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name ="Login" component={Login}/>
                 <Stack.Screen name ="Home" component={HomeTabs}/>
-                <Stack.Screen name ="RegisterUsers" component={RegisterUsers}/>
+                <Stack.Screen name ="Cadastro de Usuários" component={CadastroUsuario}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
