@@ -1,4 +1,4 @@
-from controllers.ingressosController import ingressosController
+from controllers.ingressosController import Ingressos
 
 def ingressos(app):
-    app.route('/ingressos', method=['POST','GET'])(ingressosController)
+    app.route('/ingressos', method=['POST','GET'])(Ingressos)

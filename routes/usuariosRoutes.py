@@ -1,4 +1,4 @@
-from controllers.usuariosController import usuariosController
+from controllers.usuariosController import Usuarios
 
 def usuario(app):
-    app.route('/usuarios', method=['POST', 'GET'])(usuariosController)
+    app.route('/usuarios', method=['POST', 'GET'])(Usuarios)
