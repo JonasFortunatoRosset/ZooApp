@@ -96,13 +96,6 @@ export default function App() {
             headerBackTitleStyle: {
               color: 'green', // Color of the back button text
             },
-            headerRight: () => (
-              <Button
-                onPress={() => alert('This is a button!')}
-                title="Info"
-                color="green"
-              />
-            ),
           }}
         />
       </Stack.Navigator>
