@@ -1,17 +1,29 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getUser } from '../src/functions/getUser';
 
 export default function Login({ navigation }) {
     
-    const[username, setUsername] = useState('');
-    const[password, setPassword] = useState('');
+    const[data, setData] = useState([]);
+    const[loading, setLoading] = useState(false);
+    const[error, setError] = useState(false);
+    const[email, setEmail] = useState('');
+    const[senha, setSenha] = useState('');
+
+    useEffect(() => {
+      getUser(setData, setLoading, setError)
+    }, [])
+
+    useEffect(() => {
+      console.log(data);
+    }, [data])
 
     function submit(){
         if (username === '' && password === ''){
             navigation.navigate("Home")
 
-            setUsername('')
-            setPassword('')
+            setEmail('')
+            setSenha('')
         }
         else{
             alert('Dados inválidos!')
@@ -25,18 +37,18 @@ export default function Login({ navigation }) {
                 style={styles.input}
                 placeholder='Email'
                 placeholderTextColor={'#666'}
-                value={username}
-                onChangeText={setUsername}
+                value={email}
+                onChangeText={setEmail}
                 />
             
 
             <TextInput
                 style={styles.input}
-                placeholder='Password'
+                placeholder='Senha'
                 secureTextEntry={true}
                 placeholderTextColor={'#666'}
-                value={password}
-                onChangeText={setPassword}/>
+                value={senha}
+                onChangeText={setSenha}/>
 
             <TouchableOpacity style={styles.logbutton} onPress={submit}>
                 <Text style={styles.txtbutton}>Login</Text>
