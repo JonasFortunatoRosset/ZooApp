@@ -5,7 +5,7 @@ from routes.index import default_routes
 class App():
     def __init__(self) -> None:
         self.app = Flask(__name__)
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:3433@localhost/zooapp'
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/zooapp'
         db.init_app(self.app)
         default_routes(self.app)
 

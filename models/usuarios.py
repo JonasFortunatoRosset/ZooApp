@@ -2,7 +2,7 @@ from database.db import db
 
 class Usuarios(db.Model):
     def to_dict(self):
-
+        
         return{
             'codigo'   :self.codigo,
             'nome' :self.nome,
