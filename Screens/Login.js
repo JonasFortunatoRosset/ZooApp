@@ -18,7 +18,7 @@ export default function Login({ navigation }) {
     }, [data]) */
 
     function submit(){
-        if (username === '' && password === ''){
+        if (email === 'administrador' && senha === '123'){
             navigation.navigate("Home")
 
             setEmail('')
