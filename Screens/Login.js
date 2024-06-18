@@ -1,22 +1,21 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { useState, useEffect } from 'react';
-import { getUser } from '../src/functions/getUser';
 
 export default function Login({ navigation }) {
     
-    const[data, setData] = useState([]);
+    /* const[data, setData] = useState([]);
     const[loading, setLoading] = useState(false);
-    const[error, setError] = useState(false);
+    const[error, setError] = useState(false); */
     const[email, setEmail] = useState('');
     const[senha, setSenha] = useState('');
 
-    useEffect(() => {
+    /* useEffect(() => {
       getUser(setData, setLoading, setError)
     }, [])
 
     useEffect(() => {
       console.log(data);
-    }, [data])
+    }, [data]) */
 
     function submit(){
         if (username === '' && password === ''){
