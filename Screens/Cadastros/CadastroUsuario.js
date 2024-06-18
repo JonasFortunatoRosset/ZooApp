@@ -5,6 +5,7 @@ import axios from 'axios';
   
 export default function CadastroUsuario() {
   const [user, setUser] = useState({
+    codigo: 0,
     nome: "",
     email: "",
     senha: "",
@@ -12,6 +13,7 @@ export default function CadastroUsuario() {
 
   function InserirUsuario() {
     axios.post('http://localhost:3000/usuarios', {
+      codigo: user.codigo,
       nome: user.nome,
       email: user.email,
       senha: user.senha,
