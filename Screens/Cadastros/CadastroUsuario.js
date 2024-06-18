@@ -25,6 +25,7 @@ export default function CadastroUsuario() {
     .then(response => {
       Alert.alert("Sucesso", "Usuário cadastrado com sucesso!");
       setUser({
+        codigo: 0,
         nome: "",
         email: "",
         senha: "",
