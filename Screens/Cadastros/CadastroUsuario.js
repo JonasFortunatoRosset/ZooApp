@@ -5,7 +5,7 @@ import axios from 'axios';
   
 export default function CadastroUsuario() {
   const [user, setUser] = useState({
-    codigo: 0,
+    codigo: "",
     nome: "",
     email: "",
     senha: "",
@@ -25,7 +25,7 @@ export default function CadastroUsuario() {
     .then(response => {
       Alert.alert("Sucesso", "Usuário cadastrado com sucesso!");
       setUser({
-        codigo: 0,
+        codigo: "",
         nome: "",
         email: "",
         senha: "",
@@ -40,6 +40,12 @@ export default function CadastroUsuario() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Cadastro</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Código"
+        value={user.codigo}
+        onChangeText={(text) => setUser({...user, codigo: text})}
+      />
       <TextInput
         style={styles.input}
         placeholder="Nome"
