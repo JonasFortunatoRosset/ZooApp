@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export default function CadastroAnimal() {
   const [animal, setAnimal] = useState({
+    codigo: "",
     nome: "",
     especie: "",
     dataNascimento: "",
@@ -14,6 +15,7 @@ export default function CadastroAnimal() {
 
   function InserirAnimal() {
     axios.post('http://localhost:3000/animais', {
+      codigo: animal.codigo,
       nome: animal.nome,
       especie: animal.especie,
       dataNascimento: animal.dataNascimento,
@@ -27,6 +29,7 @@ export default function CadastroAnimal() {
     .then(response => {
       Alert.alert("Sucesso", "Animal cadastrado com sucesso!");
       setAnimal({
+        codigo: "",
         nome: "",
         especie: "",
         dataNascimento: "",
@@ -43,6 +46,12 @@ export default function CadastroAnimal() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Cadastro de Animal</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Código"
+        value={animal.codigo}
+        onChangeText={(text) => setAnimal({...animal, codigo: text})}
+      />
       <TextInput
         style={styles.input}
         placeholder="Nome"

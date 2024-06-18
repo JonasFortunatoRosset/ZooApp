@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export default function CadastroFornecedor() {
   const [fornecedor, setFornecedor] = useState({
+    codigo: "",
     empresa: "",
     endereco: "",
     telefone: "",
@@ -13,6 +14,7 @@ export default function CadastroFornecedor() {
 
   function InserirFornecedor() {
     axios.post('http://localhost:3000/fornecedores', {
+      codigo: fornecedor.codigo,
       empresa: fornecedor.empresa,
       endereco: fornecedor.endereco,
       telefone: fornecedor.telefone,
@@ -25,6 +27,7 @@ export default function CadastroFornecedor() {
     .then(response => {
       Alert.alert("Sucesso", "Fornecedor cadastrado com sucesso!");
       setFornecedor({
+        codigo: "",
         empresa: "",
         endereco: "",
         telefone: "",
@@ -40,6 +43,12 @@ export default function CadastroFornecedor() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Cadastro de Fornecedor</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Código"
+        value={funcionario.codigo}
+        onChangeText={(text) => setFuncionario({...funcionario, codigo: text})}
+      />
       <TextInput
         style={styles.input}
         placeholder="Empresa"

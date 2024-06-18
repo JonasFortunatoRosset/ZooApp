@@ -39,9 +39,15 @@ export default function CadastroAlimento() {
       <Text style={styles.header}>Cadastro de Alimento</Text>
       <TextInput
         style={styles.input}
+        placeholder="Código"
+        value={alimento.codigo}
+        onChangeText={(text) => setAlimento({...alimento, codigo: text})}
+      />
+      <TextInput
+        style={styles.input}
         placeholder="Nome"
-        value={alimento.nome}
-        onChangeText={(text) => setAlimento({...alimento, nome: text})}
+        value={animal.nome}
+        onChangeText={(text) => setAnimal({...animal, nome: text})}
       />
       <TextInput
         style={styles.input}

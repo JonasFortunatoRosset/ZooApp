@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export default function CadastroFuncionario() {
   const [funcionario, setFuncionario] = useState({
+    codigo: "",
     nome: "",
     email: "",
     senha: "",
@@ -16,6 +17,7 @@ export default function CadastroFuncionario() {
 
   function InserirFuncionario() {
     axios.post('http://localhost:3000/funcionarios', {
+      codigo: funcionario.codigo,
       nome: funcionario.nome,
       email: funcionario.email,
       senha: funcionario.senha,
@@ -31,6 +33,7 @@ export default function CadastroFuncionario() {
     .then(response => {
       Alert.alert("Sucesso", "Funcionário cadastrado com sucesso!");
       setFuncionario({
+        codigo: "",
         nome: "",
         email: "",
         senha: "",
@@ -49,6 +52,12 @@ export default function CadastroFuncionario() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Cadastro de Funcionário</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Código"
+        value={funcionario.codigo}
+        onChangeText={(text) => setFuncionario({...funcionario, codigo: text})}
+      />
       <TextInput
         style={styles.input}
         placeholder="Nome"
