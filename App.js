@@ -1,13 +1,20 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Button } from "react-native";
+//import { Button } from "react-native";
 
 // Import your screens
 import HomeScreen from "./Screens/Home";
 import Ingressos from "./Screens/Ingressos";
 import Login from "./Screens/Login";
-import CadastroUsuario from "./Screens/Cadastros/CadastroUsuario";
+// Cadastro screens
+import CadastroGeralAdmin from "./Screens/Cadastros/CadastroGeralAdmin";
+import CadastroAlimento from "./Screens/Cadastros/CadastroAlimentos";
+import CadastroAnimal from "./Screens/Cadastros/CadastroAnimais";
+import CadastroFornecedor from "./Screens/Cadastros/CadastroFornecedores";
+import CadastroFuncionario from "./Screens/Cadastros/CadastroFuncionarios";
+import CadastroUsuario from "./Screens/Cadastros/CadastroUsuarios";
+
 
 // Import icons
 import { AntDesign } from '@expo/vector-icons';
@@ -77,6 +84,96 @@ export default function App() {
             headerTintColor: 'green', // Color of the header text
             headerTitleStyle: {
               fontWeight: 'bold', // Title font weight
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="CadastroGeralAdmin" 
+          component={CadastroGeralAdmin} 
+          options={{
+            title: "Todos os cadastros",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="CadastroAlimento" 
+          component={CadastroAlimento} 
+          options={{
+            title: "Cadastro de Alimentos",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="CadastroAnimal" 
+          component={CadastroAnimal} 
+          options={{
+            title: "Cadastro de Animais",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="CadastroFornecedor" 
+          component={CadastroFornecedor} 
+          options={{
+            title: "Cadastro de Fornecedor",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="CadastroFuncionario" 
+          component={CadastroFuncionario} 
+          options={{
+            title: "Cadastro de Funcionário",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
             },
           }}
         />

@@ -18,8 +18,8 @@ export default function Login({ navigation }) {
     }, [data]) */
 
     function submit(){
-        if (email === 'administrador' && senha === '123'){
-            navigation.navigate("Home")
+        if (email === 'admin' && senha === '123'){
+            navigation.navigate("CadastroGeralAdmin")
 
             setEmail('')
             setSenha('')
@@ -91,14 +91,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
-  },
-  cadbutton: {
-    width: '80%',
-    height: 50,
-    backgroundColor: '#4caf50', 
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   txtbutton: {
     color: '#fff',
