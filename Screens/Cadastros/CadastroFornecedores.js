@@ -46,8 +46,8 @@ export default function CadastroFornecedor() {
       <TextInput
         style={styles.input}
         placeholder="Código"
-        value={funcionario.codigo}
-        onChangeText={(text) => setFuncionario({...funcionario, codigo: text})}
+        value={fornecedor.codigo}
+        onChangeText={(text) => setFornecedor({...fornecedor, codigo: text})}
       />
       <TextInput
         style={styles.input}

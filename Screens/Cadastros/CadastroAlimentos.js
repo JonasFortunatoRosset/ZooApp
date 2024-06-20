@@ -5,16 +5,20 @@ import axios from 'axios';
   
 export default function CadastroAlimento() {
   const [alimento, setAlimento] = useState({
+    codigo: "",
     nome: "",
     pesoLote: "",
     dataValidade: "",
+    codFornecedor: "",
   });
 
   function InserirAlimento() {
     axios.post('http://localhost:3000/alimentos', {
+      codigo: alimento.codigo,
       nome: alimento.nome,
       pesoLote: alimento.pesoLote,
       dataValidade: alimento.dataValidade,
+      codFornecedor: alimento.codFornecedor
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -23,9 +27,11 @@ export default function CadastroAlimento() {
     .then(response => {
       Alert.alert("Sucesso", "Alimento cadastrado com sucesso!");
       setAlimento({
+        codigo: "",
         nome: "",
         pesoLote: "",
         dataValidade: "",
+        codFornecedor: "",
       });
     })
     .catch(error => {
@@ -46,8 +52,8 @@ export default function CadastroAlimento() {
       <TextInput
         style={styles.input}
         placeholder="Nome"
-        value={animal.nome}
-        onChangeText={(text) => setAnimal({...animal, nome: text})}
+        value={alimento.nome}
+        onChangeText={(text) => setAlimento({...alimento, nome: text})}
       />
       <TextInput
         style={styles.input}
@@ -60,6 +66,12 @@ export default function CadastroAlimento() {
         placeholder="Data de Validade"
         value={alimento.dataValidade}
         onChangeText={(text) => setAlimento({...alimento, dataValidade: text})}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Código do Fornecedor"
+        value={alimento.codFornecedor}
+        onChangeText={(text) => setAlimento({...alimento, codFornecedor: text})}
       />
       <Button title="Enviar" onPress={InserirAlimento} color="#34C759" />
     </View>

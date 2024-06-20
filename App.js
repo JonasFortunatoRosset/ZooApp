@@ -145,7 +145,7 @@ export default function App() {
           name="CadastroFornecedor" 
           component={CadastroFornecedor} 
           options={{
-            title: "Cadastro de Fornecedor",
+            title: "Cadastro de Fornecedores",
             headerStyle: {
               backgroundColor: 'white', // Background color of the header
             },
@@ -163,7 +163,7 @@ export default function App() {
           name="CadastroFuncionario" 
           component={CadastroFuncionario} 
           options={{
-            title: "Cadastro de Funcionário",
+            title: "Cadastro de Funcionários",
             headerStyle: {
               backgroundColor: 'white', // Background color of the header
             },
@@ -181,7 +181,7 @@ export default function App() {
           name="CadastroUsuario" 
           component={CadastroUsuario} 
           options={{
-            title: "Cadastro de Usuário",
+            title: "Cadastro de Usuários",
             headerStyle: {
               backgroundColor: 'white', // Background color of the header
             },
