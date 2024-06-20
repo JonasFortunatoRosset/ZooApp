@@ -17,3 +17,15 @@ def usuariosController():
             data = Usuarios.query.all()
         except Exception as e:
             return 'Não foi possível buscar os usuários', 405
+    elif request.method == 'DELETE':
+            try:
+                data = request.get_json()
+                delete_usuario_id = data['codigo']
+                delete_usuario = Usuarios.query.get(delete_usuario_id)
+                if delete_usuario is None:
+                    return {'error': 'Usuario não encontrado'}, 404
+                db.session.delete(delete_usuario)
+                db.session.commit()
+                return 'Usuario deletado com sucesso', 200
+            except Exception as e:
+                return {'error': 'Erro ao atualizar usuario. Erro{}'.format(e)}, 400 
