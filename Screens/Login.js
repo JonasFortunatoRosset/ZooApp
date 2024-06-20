@@ -19,7 +19,7 @@ export default function Login({ navigation }) {
 
     function submit(){
         if (email === '' && senha === ''){
-            navigation.navigate("CadastroGeralAdmin")
+            navigation.navigate("AdminCadAltExc")
 
             setEmail('')
             setSenha('')

@@ -3,23 +3,34 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 //import { Button } from "react-native";
 
+// Import icons
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+
 // Import your screens
 import HomeScreen from "./Screens/Home";
 import Ingressos from "./Screens/Ingressos";
 import Login from "./Screens/Login";
+
+//Gestão Geral
+import AdminCadAltExc from "./Screens/AdminCadAltExc";
+import CadastroGeralAdmin from "./Screens/Cadastros/CadastroGeral/CadastroGeralAdmin";
+import AltExcGeralAdmin from "./Screens/Alt&Exc/AltExcGeral/AltExcGeralAdmin";
+
 // Cadastro screens
-import CadastroGeralAdmin from "./Screens/Cadastros/CadastroGeralAdmin";
 import CadastroAlimento from "./Screens/Cadastros/CadastroAlimentos";
 import CadastroAnimal from "./Screens/Cadastros/CadastroAnimais";
 import CadastroFornecedor from "./Screens/Cadastros/CadastroFornecedores";
 import CadastroFuncionario from "./Screens/Cadastros/CadastroFuncionarios";
 import CadastroUsuario from "./Screens/Cadastros/CadastroUsuarios";
 
-
-// Import icons
-import { AntDesign } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+//Alt e Exc screens
+import AltExcAlimento from "./Screens/Alt&Exc/AltExcAlimentos";
+import AltExcAnimal from "./Screens/Alt&Exc/AltExcAnimais";
+import AltExcFornecedor from "./Screens/Alt&Exc/AltExcFornecedores";
+import AltExcFuncionario from "./Screens/Alt&Exc/AltExcFuncionarios";
+import AltExcUsuario from "./Screens/Alt&Exc/AltExcUsuarios";
 
 function HomeTabs() {
   const Tab = createBottomTabNavigator();
@@ -73,6 +84,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+        {/* Home com BottomTabs */}
         <Stack.Screen 
           name="Home" 
           component={HomeTabs} 
@@ -84,6 +96,25 @@ export default function App() {
             headerTintColor: 'green', // Color of the header text
             headerTitleStyle: {
               fontWeight: 'bold', // Title font weight
+            },
+          }}
+        />
+        {/* Telas Geral de ADM */}
+        <Stack.Screen 
+          name="AdminCadAltExc" 
+          component={AdminCadAltExc} 
+          options={{
+            title: "Gestão Geral",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
             },
           }}
         />
@@ -105,6 +136,25 @@ export default function App() {
             },
           }}
         />
+        <Stack.Screen 
+          name="AltExcGeralAdmin" 
+          component={AltExcGeralAdmin} 
+          options={{
+            title: "Todos os cadastros",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        {/* Telas de Cadastros */}
         <Stack.Screen 
           name="CadastroAlimento" 
           component={CadastroAlimento} 
@@ -182,6 +232,97 @@ export default function App() {
           component={CadastroUsuario} 
           options={{
             title: "Cadastro de Usuários",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        {/* Telas de ALterar e Deletar */}
+        <Stack.Screen 
+          name="AltExcAlimento" 
+          component={AltExcAlimento} 
+          options={{
+            title: "Alterar ou Deletar Alimentos",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="AltExcAnimal" 
+          component={AltExcAnimal} 
+          options={{
+            title: "Alterar ou Deletar Animais",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="AltExcFornecedor" 
+          component={AltExcFornecedor} 
+          options={{
+            title: "Alterar ou Deletar Fornecedores",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="AltExcFuncionario" 
+          component={AltExcFuncionario} 
+          options={{
+            title: "Alterar ou Deletar Funcionários",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="AltExcUsuario" 
+          component={AltExcUsuario} 
+          options={{
+            title: "Alterar ou Deletar Usuários",
             headerStyle: {
               backgroundColor: 'white', // Background color of the header
             },

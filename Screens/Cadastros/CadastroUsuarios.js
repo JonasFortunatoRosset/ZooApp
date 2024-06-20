@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
   
 export default function CadastroUsuario() {
-  const [user, setUser] = useState({
+  const [usuario, setUsuario] = useState({
     codigo: "",
     nome: "",
     email: "",
@@ -13,10 +13,10 @@ export default function CadastroUsuario() {
 
   function InserirUsuario() {
     axios.post('http://localhost:3000/usuarios', {
-      codigo: user.codigo,
-      nome: user.nome,
-      email: user.email,
-      senha: user.senha,
+      codigo: usuario.codigo,
+      nome: usuario.nome,
+      email: usuario.email,
+      senha: usuario.senha,
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export default function CadastroUsuario() {
     })
     .then(response => {
       Alert.alert("Sucesso", "Usuário cadastrado com sucesso!");
-      setUser({
+      setUsuario({
         codigo: "",
         nome: "",
         email: "",
@@ -43,26 +43,26 @@ export default function CadastroUsuario() {
       <TextInput
         style={styles.input}
         placeholder="Código"
-        value={user.codigo}
-        onChangeText={(text) => setUser({...user, codigo: text})}
+        value={usuario.codigo}
+        onChangeText={(text) => setUsuario({...usuario, codigo: text})}
       />
       <TextInput
         style={styles.input}
         placeholder="Nome"
-        value={user.nome}
-        onChangeText={(text) => setUser({...user, nome: text})}
+        value={usuario.nome}
+        onChangeText={(text) => setUsuario({...usuario, nome: text})}
       />
       <TextInput
         style={styles.input}
         placeholder="Email"
-        value={user.email}
-        onChangeText={(text) => setUser({...user, email: text})}
+        value={usuario.email}
+        onChangeText={(text) => setUsuario({...usuario, email: text})}
       />
       <TextInput
         style={styles.input}
         placeholder="Senha"
-        value={user.senha}
-        onChangeText={(text) => setUser({...user, senha: text})}
+        value={usuario.senha}
+        onChangeText={(text) => setUsuario({...usuario, senha: text})}
         secureTextEntry={true}
       />
       <Button title="Enviar" onPress={InserirUsuario} color="#34C759" />
