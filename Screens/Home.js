@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 
 // Importar as imagens
-import elefante from '../assets/Carrossel/elefante.jpg';
 import lion from '../assets/Carrossel/lion.jpg';
-import girafa from '../assets/Carrossel/girafa.jpg';
+import girafa from '../assets/Carrossel/girafa.jpeg';
 import hipo from '../assets/Carrossel/hipo.jpeg';
-import zebra from '../assets/Carrossel/zebra.jpg';
+import zebra from '../assets/Carrossel/zebra.jpeg';
+import elefante from '../assets/Carrossel/elefante.jpeg';
 
 const animais = [
   {
