@@ -12,12 +12,15 @@ def usuariosController():
             return 'Usuario inserido com sucesso', 200
         except Exception as e:
             return {'error: Erro ao cadastrar usuário. Erro: {}'.format(str(e))}, 400
-    elif request.method == 'GET':
-        try: 
-            data = Usuarios.query.all()
-        except Exception as e:
-            return 'Não foi possível buscar os usuários', 405
         
+    elif request.method == 'GET':
+        try:
+            data = Usuarios.query.all()
+            user = {'usuarios': [usuarios.to_dict() for usuarios in data]}
+            return user
+        except Exception as e:
+            return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405
+
     elif request.method == 'PUT':
             try:
                 data = request.get_json()

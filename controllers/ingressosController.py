@@ -13,6 +13,14 @@ def ingressosController():
         except Exception as e:
             return {'error: Erro ao cadastrar ingresso. Erro: {}'.format(str(e))}, 400
     
+    elif request.method == 'GET':
+        try:
+            data = Ingressos.query.all()
+            ingresso = {'ingressos': [ingressos.to_dict() for ingressos in data]}
+            return ingresso
+
+        except Exception as e:
+            return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405
         
     elif request.method == 'PUT':
             try:

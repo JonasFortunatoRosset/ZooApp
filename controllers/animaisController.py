@@ -12,7 +12,16 @@ def animaisController():
             return 'animais inserido com sucesso', 200
         except Exception as e:
             return {'error: Erro ao cadastrar os animais. Erro: {}'.format(str(e))}, 400
-        
+
+    elif request.method == 'GET':
+        try:
+            data = Animais.query.all()
+            animal = {'animais': [animais.to_dict() for animais in data]}
+            return animal
+
+        except Exception as e:
+            return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405
+
     elif request.method == 'PUT':
         try:
             data = request.get_json()

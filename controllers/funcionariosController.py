@@ -12,7 +12,16 @@ def funcionariosController():
             return 'funcionarios inserido com sucesso', 200
         except Exception as e:
             return {'error: Erro ao cadastrar funcionarios. Erro: {}'.format(str(e))}, 400
-        
+    
+    elif request.method == 'GET':
+        try:
+            data = Funcionarios.query.all()
+            funcionario = {'funcionarios': [funcionarios.to_dict() for funcionarios in data]}
+            return funcionario
+
+        except Exception as e:
+            return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405
+
     elif request.method == 'PUT':
             try:
                 data = request.get_json()

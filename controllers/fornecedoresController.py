@@ -12,7 +12,16 @@ def fornecedoresController():
             return 'fornecedores inserido com sucesso', 200
         except Exception as e:
             return {'error: Erro ao cadastrar fornecedores. Erro: {}'.format(str(e))}, 400
-        
+
+    elif request.method == 'GET':
+        try:
+            data = Fornecedores.query.all()
+            fornecedor = {'fornecedores': [fornecedores.to_dict() for fornecedores in data]}
+            return fornecedor
+
+        except Exception as e:
+            return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405   
+
     elif request.method == 'PUT':
         try:
             data = request.get_json()

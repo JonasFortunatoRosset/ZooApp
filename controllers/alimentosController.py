@@ -13,6 +13,15 @@ def alimentosController():
         except Exception as e:
             return {'error: Erro ao cadastrar os alimentos. Erro: {}'.format(str(e))}, 400
         
+    elif request.method == 'GET':
+        try:
+            data = Alimentos.query.all()
+            alimento = {'ingressos': [alimentos.to_dict() for alimentos in data]}
+            return alimento
+
+        except Exception as e:
+            return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405
+
     elif request.method == 'PUT':
         try:
             data = request.get_json()
