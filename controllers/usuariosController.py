@@ -17,6 +17,23 @@ def usuariosController():
             data = Usuarios.query.all()
         except Exception as e:
             return 'Não foi possível buscar os usuários', 405
+        
+    elif request.method == 'PUT':
+            try:
+                data = request.get_json()
+                put_usuario_id = data['codigo']
+                put_usuario = Usuarios.query.get(put_usuario_id)
+                if put_usuario is None:
+                    return {'error': 'Cliente não encontrado'}, 404
+                put_usuario.nome = data.get('nome', put_usuario.nome)
+                put_usuario.email = data.get('email', put_usuario.email)
+                put_usuario.senha = data.get('senha', put_usuario.senha)
+                print(put_usuario.nome, put_usuario.email, put_usuario.senha)
+                db.session.commit()
+                return 'Usuario alterado com sucesso', 200
+            except Exception as e:
+                return {'error': 'Erro ao atualizar Usuario. Erro{}'.format(e)}, 400
+        
     elif request.method == 'DELETE':
             try:
                 data = request.get_json()

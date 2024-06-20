@@ -12,6 +12,24 @@ def fornecedoresController():
             return 'fornecedores inserido com sucesso', 200
         except Exception as e:
             return {'error: Erro ao cadastrar fornecedores. Erro: {}'.format(str(e))}, 400
+        
+    elif request.method == 'PUT':
+        try:
+            data = request.get_json()
+            put_fornecedores_id = data['codigo']
+            put_fornecedores = Fornecedores.query.get(put_fornecedores_id)
+            if put_fornecedores is None:
+                return {'error': 'Fornecedor não encontrado'}, 404
+            put_fornecedores.empresa = data.get('empresa', put_fornecedores.empresa)
+            put_fornecedores.endereco = data.get('endereco', put_fornecedores.endereco)
+            put_fornecedores.telefone = data.get('telefone', put_fornecedores.telefone)
+            put_fornecedores.email = data.get('email', put_fornecedores.email)
+            print(put_fornecedores.empresa, put_fornecedores.endereco, put_fornecedores.telefone, put_fornecedores.email)
+            db.session.commit()
+            return 'Fornecedor alterado com sucesso', 200
+        except Exception as e:
+            return {'error': 'Erro ao atualizar Fornecedor. Erro{}'.format(e)}, 400
+
     elif request.method == 'DELETE':
             try:
                 data = request.get_json()
