@@ -6,7 +6,7 @@ def funcionariosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            funcionarios = Funcionarios(data['nome'])
+            funcionarios = Funcionarios(data['codigo'], data['nome'], data['email'], data['senha'], data['salario'], data['endereco'], data['cargaHoraria'])
             db.session.add(funcionarios)
             db.session.commit()
             return 'funcionarios inserido com sucesso', 200

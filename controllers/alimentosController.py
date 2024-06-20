@@ -6,7 +6,7 @@ def alimentosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            alimentos = Alimentos(data['nome'])
+            alimentos = Alimentos(data['codigo'], data['nome'], data['pesoLote'], data['dataValidade'], data['codFornecedor'])
             db.session.add(alimentos)
             db.session.commit()
             return 'alimentos inserido com sucesso', 200

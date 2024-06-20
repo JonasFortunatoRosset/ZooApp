@@ -6,7 +6,7 @@ def fornecedoresController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            fornecedores = Fornecedores(data['nome'])
+            fornecedores = Fornecedores(data['codigo'], data['empresa'], data['endereco'], data['telefone'], data['email'])
             db.session.add(fornecedores)
             db.session.commit()
             return 'fornecedores inserido com sucesso', 200
