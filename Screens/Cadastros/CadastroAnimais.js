@@ -19,7 +19,7 @@ export default function CadastroAnimal() {
       nome: animal.nome,
       especie: animal.especie,
       dataNascimento: animal.dataNascimento,
-      dataChegada: animal.dataChegada,
+      dataChegadaZoo: animal.dataChegadaZoo,
       status: animal.status,
     }, {
       headers: {
@@ -72,9 +72,9 @@ export default function CadastroAnimal() {
       />
       <TextInput
         style={styles.input}
-        placeholder="Data de Chegada"
-        value={animal.dataChegada}
-        onChangeText={(text) => setAnimal({...animal, dataChegada: text})}
+        placeholder="Data de Chegada Zoo"
+        value={animal.dataChegadaZoo}
+        onChangeText={(text) => setAnimal({...animal, dataChegadaZoo: text})}
       />
       <TextInput
         style={styles.input}

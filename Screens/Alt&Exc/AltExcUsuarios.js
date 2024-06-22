@@ -38,6 +38,7 @@ export default function AltExcUsuario(){
                 <Text style={styles.itemText}>Código: {item.codigo}</Text>
                 <Text style={styles.itemText}>Nome: {item.nome}</Text>
                 <Text style={styles.itemText}>Email: {item.email}</Text>
+                <Text style={styles.itemText}>Email: {item.senha}</Text>
             </View>
             )}
         />
