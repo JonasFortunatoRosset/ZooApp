@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from database.db import db
 from models.funcionarios import Funcionarios
 
@@ -6,12 +6,12 @@ def funcionariosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            funcionarios = Funcionarios(data['codigo'], data['nome'], data['email'], data['senha'], data['salario'], data['endereco'], data['cargaHoraria'])
+            funcionarios = Funcionarios(codigo=data['codigo'], nome=data['nome'], email=data['email'], senha=data['senha'], salario=data['salario'], endereco=data['endereco'], cargaHoraria=data['cargaHoraria'], cargo=data['cargo'])
             db.session.add(funcionarios)
             db.session.commit()
-            return 'funcionarios inserido com sucesso', 200
+            return jsonify({'message': 'Funcionario inserido com sucesso'}), 200
         except Exception as e:
-            return {'error: Erro ao cadastrar funcionarios. Erro: {}'.format(str(e))}, 400
+            return jsonify({'error': 'Erro ao cadastrar Funcionario. Erro: {}'.format(str(e))}), 400
     
     elif request.method == 'GET':
         try:

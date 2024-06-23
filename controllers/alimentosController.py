@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from database.db import db
 from models.alimentos import Alimentos
 
@@ -6,12 +6,12 @@ def alimentosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            alimentos = Alimentos(data['codigo'], data['nome'], data['pesoLote'], data['dataValidade'], data['codFornecedor'])
+            alimentos = Alimentos(codigo=data['codigo'], nome=data['nome'], pesoLote=data['pesoLote'], dataValidade=data['dataValidade'], codfornecedor=data['codFornecedor'])
             db.session.add(alimentos)
             db.session.commit()
-            return 'alimentos inserido com sucesso', 200
+            return jsonify({'message': 'Alimentos inserido com sucesso'}), 200
         except Exception as e:
-            return {'error: Erro ao cadastrar os alimentos. Erro: {}'.format(str(e))}, 400
+            return jsonify({'error': 'Erro ao cadastrar Alimentos. Erro: {}'.format(str(e))}), 400
         
     elif request.method == 'GET':
         try:

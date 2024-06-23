@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from database.db import db
 from models.fornecedores import Fornecedores
 
@@ -6,12 +6,12 @@ def fornecedoresController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            fornecedores = Fornecedores(data['codigo'], data['empresa'], data['endereco'], data['telefone'], data['email'])
+            fornecedores = Fornecedores(codigo=data['codigo'], empresa=data['empresa'], endereco=data['endereco'], telefone=data['telefone'], email=data['email'])
             db.session.add(fornecedores)
             db.session.commit()
-            return 'fornecedores inserido com sucesso', 200
+            return jsonify({'message': 'Fornecedor inserido com sucesso'}), 200
         except Exception as e:
-            return {'error: Erro ao cadastrar fornecedores. Erro: {}'.format(str(e))}, 400
+            return jsonify({'error': 'Erro ao cadastrar Fornecedor. Erro: {}'.format(str(e))}), 400
 
     elif request.method == 'GET':
         try:

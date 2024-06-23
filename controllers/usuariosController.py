@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from database.db import db
 from models.usuarios import Usuarios
 
@@ -6,20 +6,21 @@ def usuariosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            usuario = Usuarios(data['codigo'], data['nome'], data['email'], data['senha'])
+            usuario = Usuarios(codigo=data['codigo'], nome=data['nome'], email=data['email'], senha=data['senha'])
+            print(data)
             db.session.add(usuario)
             db.session.commit()
-            return 'Usuario inserido com sucesso', 200
+            return jsonify({'message': 'Usuario inserido com sucesso'}), 200
         except Exception as e:
-            return {'error: Erro ao cadastrar usuário. Erro: {}'.format(str(e))}, 400
+            return jsonify({'error': 'Erro ao cadastrar usuário. Erro: {}'.format(str(e))}), 400
         
     elif request.method == 'GET':
         try:
             data = Usuarios.query.all()
             user = {'usuarios': [usuarios.to_dict() for usuarios in data]}
-            return user
+            return jsonify(user)
         except Exception as e:
-            return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405
+            return {'error': f'Não foi possível buscar usuários. Error: {str(e)}'}, 405
 
     elif request.method == 'PUT':
             try:

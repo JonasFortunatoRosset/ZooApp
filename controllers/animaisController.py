@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from database.db import db
 from models.animais import Animais
 
@@ -6,18 +6,18 @@ def animaisController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            animais = Animais(data['codigo'], data['nome'], data['especie'], data['dataNascimento'], data['status'])
+            animais = Animais(codigo=data['codigo'], nome=data['nome'],especie=data['especie'], dataNascimento=data['dataNascimento'],dataChegadaZoo= data['dataChegadaZoo'],status=data['status'])
             db.session.add(animais)
             db.session.commit()
-            return 'animais inserido com sucesso', 200
+            return jsonify({'message': 'Animais inserido com sucesso'}), 200
         except Exception as e:
-            return {'error: Erro ao cadastrar os animais. Erro: {}'.format(str(e))}, 400
+            return jsonify({'error': 'Erro ao cadastrar Animais. Erro: {}'.format(str(e))}), 400
 
     elif request.method == 'GET':
         try:
             data = Animais.query.all()
             animal = {'animais': [animais.to_dict() for animais in data]}
-            return animal
+            return jsonify(animal)
 
         except Exception as e:
             return 'Não foi possível buscar usuários. Error: {}'.format(str(e)), 405

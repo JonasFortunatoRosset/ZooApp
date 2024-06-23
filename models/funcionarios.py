@@ -18,7 +18,7 @@ class Funcionarios(db.Model):
     nome         = db.Column(db.String(100))
     email        = db.Column(db.String(100))
     senha        = db.Column(db.String(100))
-    salario      = db.Column(db.Float(10,2))
+    salario      = db.Column(db.Float)
     endereco     = db.Column(db.String(100))
     cargaHoraria = db.Column(db.String(100))
     cargo        = db.Column(db.String(100))

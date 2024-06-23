@@ -6,7 +6,7 @@ def ingressosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            ingressos = Ingressos(data['codigo'], data['tipo'], data['status'], data['codusuario'])
+            ingressos = Ingressos(codigo=data['codigo'], tipo=data['tipo'], status=data['status'], codusuario=data['codusuario'])
             db.session.add(ingressos)
             db.session.commit()
             return 'Ingresso inserido com sucesso', 200
