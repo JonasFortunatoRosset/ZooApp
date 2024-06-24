@@ -34,25 +34,27 @@ export default function AltExcFornecedor() {
     };
 
     const handleUpdate = () => {
-        axios.put(`http://localhost:3000/fornecedores/${formData.codigo}`, formData)
-            .then(response => {
-                setFornecedores(fornecedores.map(fornecedor => fornecedor.codigo === formData.codigo ? formData : fornecedor));
-                setEditingFornecedor(null);
-                setFormData({ codigo: '', empresa: '', endereco: '', telefone: '', email: '' });
-                setModalVisible(false);
-            })
-            .catch(error => {
-                console.error('Erro ao atualizar fornecedor:', error);
-            });
+        axios.put(`http://localhost:3000/fornecedores`, formData, {
+            params: { codigo: formData.codigo }
+        })
+        .then(response => {
+            setFornecedores(fornecedores.map(fornecedor => fornecedor.codigo === formData.codigo ? formData : fornecedor));
+            setEditingFornecedor(null);
+            setFormData({ codigo: '', empresa: '', telefone: '', email: '' });
+            setModalVisible(false);
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar funcionário:', error);
+        });
     };
 
     const handleDelete = (codigo) => {
-        axios.delete(`http://localhost:3000/fornecedores/${codigo}`)
+        axios.delete('http://localhost:3000/fornecedores', { params: { codigo } })
             .then(response => {
                 setFornecedores(fornecedores.filter(fornecedor => fornecedor.codigo !== codigo));
             })
             .catch(error => {
-                console.error('Erro ao deletar fornecedor:', error);
+                console.error('Erro ao deletar fornecedor:',error.response ? error.response.data : error.message);
             });
     };
 

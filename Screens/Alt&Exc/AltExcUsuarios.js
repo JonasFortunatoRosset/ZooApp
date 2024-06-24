@@ -33,28 +33,29 @@ export default function AltExcUsuario() {
     };
 
     const handleUpdate = () => {
-        axios.put(`http://localhost:3000/usuarios/${formData.codigo}`, formData)
-            .then(response => {
-                setUsuarios(usuarios.map(usuario => usuario.codigo === formData.codigo ? formData : usuario));
-                setEditingFuncionario(null);
-                setFormData({ codigo: '', nome: '', email: '', senha: '' });
-                setModalVisible(false);
-            })
-            .catch(error => {
-                console.error('Erro ao atualizar usuário:', error);
-            });
+        axios.put(`http://localhost:3000/usuarios`, formData, {
+            params: { codigo: formData.codigo }
+        })
+        .then(response => {
+            setUsuarios(usuarios.map(usuario => usuario.codigo === formData.codigo ? formData : usuario));
+            setEditingFuncionario(null);
+            setFormData({ codigo: '', nome: '', email: '', senha: '' });
+            setModalVisible(false);
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar usuário:', error);
+        });
     };
 
     const handleDelete = (codigo) => {
-        axios.delete(`http://localhost:3000/usuarios/${codigo}`)
-            .then(response => {
-                setUsuarios(usuarios.filter(usuario => usuario.codigo !== codigo));
-            })
-            .catch(error => {
-                console.error('Erro ao deletar usuário:', error);
-            });
+    axios.delete(`http://localhost:3000/usuarios`, { params: { codigo } })
+        .then(response => {
+            setUsuarios(usuarios.filter(usuario => usuario.codigo !== codigo));
+        })
+        .catch(error => {
+            console.error('Erro ao deletar usuário:', error.response ? error.response.data : error.message);
+        });
     };
-
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
@@ -92,6 +93,7 @@ export default function AltExcUsuario() {
                         </View>
                     </View>
                 )}
+                contentContainerStyle={{ paddingBottom: 20 }}
             />
             {/* Modal para editar usuário */}
             <Modal

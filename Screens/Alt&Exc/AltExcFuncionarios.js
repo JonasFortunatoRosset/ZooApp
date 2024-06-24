@@ -37,34 +37,28 @@ export default function AltExcFuncionario() {
     };
 
     const handleUpdate = () => {
-        axios.put(`http://localhost:3000/funcionarios/${formData.codigo}`, formData)
-            .then(response => {
-                setFuncionarios(funcionarios.map(funcionario => funcionario.codigo === formData.codigo ? formData : funcionario));
-                setEditingFuncionario(null);
-                setFormData({
-                    codigo: '',
-                    nome: '',
-                    email: '',
-                    senha: '',
-                    salario: '',
-                    endereco: '',
-                    cargaHoraria: '',
-                    cargo: ''
-                });
-                setModalVisible(false);
-            })
-            .catch(error => {
-                console.error('Erro ao atualizar funcionário:', error);
-            });
+        axios.put(`http://localhost:3000/funcionarios`, formData, {
+            params: { codigo: formData.codigo }
+        })
+        .then(response => {
+            setFuncionarios(funcionarios.map(funcionario => funcionario.codigo === formData.codigo ? formData : funcionario));
+            setEditingFuncionario(null);
+            setFormData({ codigo: '', nome: '', email: '', salario: '', endereco: '', cargaHoraria: '' , cargo: '' });
+            setModalVisible(false);
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar funcionário:', error);
+        });
     };
+    
 
     const handleDelete = (codigo) => {
-        axios.delete(`http://localhost:3000/funcionarios/${codigo}`)
+        axios.delete('http://localhost:3000/funcionarios', { params: { codigo } })
             .then(response => {
                 setFuncionarios(funcionarios.filter(funcionario => funcionario.codigo !== codigo));
             })
             .catch(error => {
-                console.error('Erro ao deletar funcionário:', error);
+                console.error('Erro ao deletar funcionário:', error.response ? error.response.data : error.message);
             });
     };
 

@@ -11,14 +11,14 @@ export default function Login({ navigation }) {
     const submit = async () => {
         if (email === '' || senha === '') {
             alert('Por favor, preencha todos os campos!');
-            return;
+            navigation.navigate('AdminCadAltExc')
         }
 
         setLoading(true);
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:3000/usuarios', {
+            const response = await axios.get('http://localhost:3000/usuarios', {
                 email,
                 senha
             });

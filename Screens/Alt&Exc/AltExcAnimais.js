@@ -48,7 +48,7 @@ export default function AltExcAnimal() {
     };
 
     const handleDelete = (codigo) => {
-        axios.delete(`http://localhost:3000/animais/${codigo}`)
+        axios.delete('http://localhost:3000/animais', { params: { codigo } })
             .then(response => {
                 setAnimais(animais.filter(animal => animal.codigo !== codigo));
             })

@@ -47,7 +47,7 @@ export default function AltExcAlimento() {
     };
 
     const handleDelete = (codigo) => {
-        axios.delete(`http://localhost:3000/alimentos/${codigo}`)
+        axios.delete('http://localhost:3000/alimentos', { params: { codigo } })
             .then(response => {
                 setAlimentos(alimentos.filter(alimento => alimento.codigo !== codigo));
             })
