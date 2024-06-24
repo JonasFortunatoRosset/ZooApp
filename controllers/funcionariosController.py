@@ -42,14 +42,13 @@ def funcionariosController():
                 return {'error': 'Erro ao atualizar Funcionario. Erro{}'.format(e)}, 400
 
     elif request.method == 'DELETE':
-            try:
-                data = request.get_json()
-                delete_funcionario_id = data['codigo']
-                delete_funcionario = Funcionarios.query.get(delete_funcionario_id)
-                if delete_funcionario is None:
-                    return {'error': 'Funcionario não encontrado'}, 404
-                db.session.delete(delete_funcionario)
-                db.session.commit()
-                return 'Funcionario deletado com sucesso', 200
-            except Exception as e:
-                return {'error': 'Erro ao atualizar Funcionario. Erro{}'.format(e)}, 400 
+        try:
+            codigo = request.args.get('codigo')
+            delete_funcionario = Funcionarios.query.get(codigo)
+            if delete_funcionario is None:
+                return {'error': 'Funcionario não encontrado'}, 404
+            db.session.delete(delete_funcionario)
+            db.session.commit()
+            return 'Funcionario deletado com sucesso', 200
+        except Exception as e:
+            return {'error': 'Erro ao deletar Funcionario. Erro{}'.format(e)}, 400

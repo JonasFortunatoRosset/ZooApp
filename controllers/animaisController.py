@@ -41,14 +41,14 @@ def animaisController():
             return {'error': 'Erro ao atualizar Animal. Erro{}'.format(e)}, 400
 
     elif request.method == 'DELETE':
-            try:
-                data = request.get_json()
-                delete_animais_id = data['codigo']
-                delete_animais = Animais.query.get(delete_animais_id)
-                if delete_animais is None:
-                    return {'error': 'Animais não encontrado'}, 404
-                db.session.delete(delete_animais)
-                db.session.commit()
-                return 'Animais deletado com sucesso', 200
-            except Exception as e:
-                return {'error': 'Erro ao atualizar Animais. Erro{}'.format(e)}, 400 
+        try:
+            codigo = request.args.get('codigo')
+            delete_animais = Animais.query.get(codigo)
+            if delete_animais is None:
+                return {'error': 'Animal não encontrado'}, 404
+            db.session.delete(delete_animais)
+            db.session.commit()
+            return 'Animal deletado com sucesso', 200
+        except Exception as e:
+            return {'error': 'Erro ao deletar Animal. Erro{}'.format(e)}, 400
+

@@ -6,7 +6,7 @@ def alimentosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            alimentos = Alimentos(codigo=data['codigo'], nome=data['nome'], pesoLote=data['pesoLote'], dataValidade=data['dataValidade'], codfornecedor=data['codFornecedor'])
+            alimentos = Alimentos(codigo=data['codigo'], nome=data['nome'], pesoLote=data['pesoLote'], dataValidade=data['dataValidade'], codFornecedor=data['codFornecedor'])
             db.session.add(alimentos)
             db.session.commit()
             return jsonify({'message': 'Alimentos inserido com sucesso'}), 200
@@ -40,14 +40,13 @@ def alimentosController():
             return {'error': 'Erro ao atualizar Alimento. Erro{}'.format(e)}, 400
 
     elif request.method == 'DELETE':
-            try:
-                data = request.get_json()
-                delete_alimentos_id = data['codigo']
-                delete_alimentos = Alimentos.query.get(delete_alimentos_id)
-                if delete_alimentos is None:
-                    return {'error': 'Alimentos não encontrado'}, 404
-                db.session.delete(delete_alimentos)
-                db.session.commit()
-                return 'Alimentos deletado com sucesso', 200
-            except Exception as e:
-                return {'error': 'Erro ao atualizar Alimentos. Erro{}'.format(e)}, 400 
+        try:
+            codigo = request.args.get('codigo')
+            delete_alimento = Alimentos.query.get(codigo)
+            if delete_alimento is None:
+                return {'error': 'Alimento não encontrado'}, 404
+            db.session.delete(delete_alimento)
+            db.session.commit()
+            return 'Alimento deletado com sucesso', 200
+        except Exception as e:
+            return {'error': 'Erro ao deletar Alimento. Erro{}'.format(e)}, 400

@@ -40,14 +40,13 @@ def fornecedoresController():
             return {'error': 'Erro ao atualizar Fornecedor. Erro{}'.format(e)}, 400
 
     elif request.method == 'DELETE':
-            try:
-                data = request.get_json()
-                delete_fornecedores_id = data['codigo']
-                delete_fornecedor = Fornecedores.query.get(delete_fornecedores_id)
-                if delete_fornecedor is None:
-                    return {'error': 'Fornecedor não encontrado'}, 404
-                db.session.delete(delete_fornecedor)
-                db.session.commit()
-                return 'Fornecedor deletado com sucesso', 200
-            except Exception as e:
-                return {'error': 'Erro ao atualizar Fornecedor. Erro{}'.format(e)}, 400 
+        try:
+            codigo = request.args.get('codigo')
+            delete_fornecedor = Fornecedores.query.get(codigo)
+            if delete_fornecedor is None:
+                return {'error': 'Fornecedor não encontrado'}, 404
+            db.session.delete(delete_fornecedor)
+            db.session.commit()
+            return 'Fornecedor deletado com sucesso', 200
+        except Exception as e:
+            return {'error': 'Erro ao deletar Fornecedor. Erro{}'.format(e)}, 400

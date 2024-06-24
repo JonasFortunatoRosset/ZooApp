@@ -37,14 +37,13 @@ def ingressosController():
                 return {'error': 'Erro ao atualizar Ingresso. Erro{}'.format(e)}, 400
 
     elif request.method == 'DELETE':
-            try:
-                data = request.get_json()
-                delete_ingresso_id = data['codigo']
-                delete_ingresso = Ingressos.query.get(delete_ingresso_id)
-                if delete_ingresso is None:
-                    return {'error': 'Ingresso não encontrado'}, 404
-                db.session.delete(delete_ingresso)
-                db.session.commit()
-                return 'Ingresso deletado com sucesso', 200
-            except Exception as e:
-                return {'error': 'Erro ao atualizar ingresso. Erro{}'.format(e)}, 400 
+        try:
+            codigo = request.args.get('codigo')
+            delete_ingresso = Ingressos.query.get(codigo)
+            if delete_ingresso is None:
+                return {'error': 'Ingresso não encontrado'}, 404
+            db.session.delete(delete_ingresso)
+            db.session.commit()
+            return 'Ingresso deletado com sucesso', 200
+        except Exception as e:
+            return {'error': 'Erro ao deletar Ingresso. Erro{}'.format(e)}, 400
