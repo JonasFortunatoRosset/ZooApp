@@ -6,7 +6,7 @@ from flask_cors import CORS
 class App():
     def __init__(self) -> None:
         self.app = Flask(__name__)
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:jonasbr3433%40A@localhost/zooapp'
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/zooapp'
         db.init_app(self.app)
         CORS(self.app)
         default_routes(self.app)

@@ -16,7 +16,7 @@ def alimentosController():
     elif request.method == 'GET':
         try:
             data = Alimentos.query.all()
-            alimento = {'ingressos': [alimentos.to_dict() for alimentos in data]}
+            alimento = {'alimentos': [alimentos.to_dict() for alimentos in data]}
             return alimento
 
         except Exception as e:
