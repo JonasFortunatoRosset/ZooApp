@@ -11,20 +11,20 @@ export default function Login({ navigation }) {
     const submit = async () => {
         if (email === '' || senha === '') {
             alert('Por favor, preencha todos os campos!');
-            navigation.navigate('AdminCadAltExc')
+            return;
         }
 
         setLoading(true);
         setError('');
 
         try {
-            const response = await axios.get('http://localhost:3000/usuarios', {
+            const response = await axios.post('http://localhost:3000/api/login', {
                 email,
                 senha
             });
 
             if (response.data.success) {
-                navigation.navigate("AdminCadAltExc");
+                navigation.navigate("AfterLoginScreen");
                 setEmail('');
                 setSenha('');
             } else {
@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
         color: 'red',
         marginBottom: 10,
     },
-});
+}); 
