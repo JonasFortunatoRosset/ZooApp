@@ -3,14 +3,14 @@ import { StyleSheet, View, Image, Text, Button, ScrollView } from 'react-native'
 
 export default function Ingressos({ navigation }) {
   const handleNavigation = () => {
-    navigation.navigate('ComprarIngresso');
+    navigation.navigate('LoginUser');
   };
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
         <Image
-          source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwp6H5RaMSlEqJVWm5WCH9qryzHeZ9e4DQDQ&s' }}
+          source={{ uri: 'https://untappedcities.com/wp-content/uploads/2016/03/Bronx-Zoo-Sign-NYC.jpg' }}
           style={styles.image}
         />
         <Text style={styles.description}>

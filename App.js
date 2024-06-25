@@ -14,7 +14,8 @@ import Ingressos from "./Screens/Ingressos";
 import Login from "./Screens/Login";
 
 //Após Login
-import AfterLoginScreen from "./Screens/LoginAdminUser/AfterLoginScreen"
+import LoginAdmin from "./Screens/LoginAdminUser/LoginAdmin"
+import LoginUser from "./Screens/LoginAdminUser/LoginUser";
 
 //Comprar Ingresso
 import ComprarIngresso from "./Screens/ComprarIngresso/ComprarIngresso"
@@ -124,12 +125,30 @@ export default function App() {
             },
           }}
         />
-        {/* Tela após o Login */}
+        {/* Telas de login após o Login */}
         <Stack.Screen 
-          name="AfterLoginScreen" 
-          component={AfterLoginScreen} 
+          name="LoginAdmin" 
+          component={LoginAdmin} 
           options={{
-            title: "Admin & User",
+            title: "Login de Admin",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="LoginUser" 
+          component={LoginUser} 
+          options={{
+            title: "Login de Usuário",
             headerStyle: {
               backgroundColor: 'white', // Background color of the header
             },

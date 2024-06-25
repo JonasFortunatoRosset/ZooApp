@@ -1,66 +1,14 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
-import axios from 'axios';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default function Login({ navigation }) {
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-
-    const submit = async () => {
-        if (email === '' || senha === '') {
-            alert('Por favor, preencha todos os campos!');
-            return;
-        }
-
-        setLoading(true);
-        setError('');
-
-        try {
-            const response = await axios.post('http://localhost:3000/api/login', {
-                email,
-                senha
-            });
-
-            if (response.data.success) {
-                navigation.navigate("Ingressos");
-                setEmail('');
-                setSenha('');
-            } else {
-                setError('Dados inválidos!');
-            }
-        } catch (err) {
-            setError('Erro na comunicação com o servidor.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Login</Text>
-            <TextInput
-                style={styles.input}
-                placeholder='Email'
-                placeholderTextColor={'#666'}
-                value={email}
-                onChangeText={setEmail}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder='Senha'
-                secureTextEntry={true}
-                placeholderTextColor={'#666'}
-                value={senha}
-                onChangeText={setSenha}
-            />
-            {error ? <Text style={styles.error}>{error}</Text> : null}
-            <TouchableOpacity style={styles.logbutton} onPress={submit} disabled={loading}>
-                <Text style={styles.txtbutton}>{loading ? 'Carregando...' : 'Login Admin'}</Text>
+            <TouchableOpacity style={styles.logbutton} onPress={() => navigation.navigate('LoginAdmin')}>
+                <Text style={styles.txtbutton}>Login Admin</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.logbutton} onPress={submit} disabled={loading}>
-                <Text style={styles.txtbutton}>{loading ? 'Carregando...' : 'Login Usuário'}</Text>
+            <TouchableOpacity style={styles.logbutton} onPress={() => navigation.navigate('LoginUser')}>
+                <Text style={styles.txtbutton}>Login Usuário</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.logbutton} onPress={() => navigation.navigate('CadastroUsuario')}>
                 <Text style={styles.txtbutton}>Cadastrar Usuário</Text>
