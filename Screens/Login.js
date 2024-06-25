@@ -24,7 +24,7 @@ export default function Login({ navigation }) {
             });
 
             if (response.data.success) {
-                navigation.navigate("AfterLoginScreen");
+                navigation.navigate("Ingressos");
                 setEmail('');
                 setSenha('');
             } else {
@@ -57,7 +57,10 @@ export default function Login({ navigation }) {
             />
             {error ? <Text style={styles.error}>{error}</Text> : null}
             <TouchableOpacity style={styles.logbutton} onPress={submit} disabled={loading}>
-                <Text style={styles.txtbutton}>{loading ? 'Carregando...' : 'Login'}</Text>
+                <Text style={styles.txtbutton}>{loading ? 'Carregando...' : 'Login Admin'}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.logbutton} onPress={submit} disabled={loading}>
+                <Text style={styles.txtbutton}>{loading ? 'Carregando...' : 'Login Usuário'}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.logbutton} onPress={() => navigation.navigate('CadastroUsuario')}>
                 <Text style={styles.txtbutton}>Cadastrar Usuário</Text>

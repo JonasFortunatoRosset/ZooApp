@@ -5,10 +5,10 @@ export default function AfterLoginScreen({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.title}>Bem-vindo!</Text>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
-                <Text style={styles.buttonText}>Página Home</Text>
+                <Text style={styles.buttonText}>Usuário</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AdminCadAltExc')}>
-                <Text style={styles.buttonText}>Cadastros/Alteração/Exclusão</Text>
+                <Text style={styles.buttonText}>Admin</Text>
             </TouchableOpacity>
         </View>
     );

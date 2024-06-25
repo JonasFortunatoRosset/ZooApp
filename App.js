@@ -13,6 +13,12 @@ import HomeScreen from "./Screens/Home";
 import Ingressos from "./Screens/Ingressos";
 import Login from "./Screens/Login";
 
+//Após Login
+import AfterLoginScreen from "./Screens/LoginAdminUser/AfterLoginScreen"
+
+//Comprar Ingresso
+import ComprarIngresso from "./Screens/ComprarIngresso/ComprarIngresso"
+
 //Gestão Geral
 import AdminCadAltExc from "./Screens/AdminCadAltExc";
 import CadastroGeralAdmin from "./Screens/Cadastros/CadastroGeral/CadastroGeralAdmin";
@@ -96,6 +102,25 @@ export default function App() {
             headerTintColor: 'green', // Color of the header text
             headerTitleStyle: {
               fontWeight: 'bold', // Title font weight
+            },
+          }}
+        />
+        {/* Tela de Comprar Ingressos */}
+        <Stack.Screen 
+          name="ComprarIngresso" 
+          component={ComprarIngresso} 
+          options={{
+            title: "Comprar Ingressos",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
             },
           }}
         />
