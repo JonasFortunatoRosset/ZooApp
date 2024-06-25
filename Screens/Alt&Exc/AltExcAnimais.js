@@ -35,16 +35,18 @@ export default function AltExcAnimal() {
     };
 
     const handleUpdate = () => {
-        axios.put(`http://localhost:3000/animais/${formData.codigo}`, formData)
-            .then(response => {
-                setAnimais(animais.map(animal => animal.codigo === formData.codigo ? formData : animal));
-                setEditingAnimal(null);
-                setFormData({ codigo: '', nome: '', especie: '', dataNascimento: '', dataChegadaZoo: '', status: '' });
-                setModalVisible(false);
-            })
-            .catch(error => {
-                console.error('Erro ao atualizar animal:', error);
-            });
+        axios.put(`http://localhost:3000/animais`, formData, {
+            params: { codigo: formData.codigo }
+        })
+        .then(response => {
+            setAnimais(animais.map(animal => animal.codigo === formData.codigo ? formData : animal));
+            setEditingAnimal(null);
+            setFormData({ codigo: '', nome: '', especie: '', dataNascimento: '', dataChegada: '', status: ''});
+            setModalVisible(false);
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar animal:', error);
+        });
     };
 
     const handleDelete = (codigo) => {

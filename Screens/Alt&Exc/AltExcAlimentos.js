@@ -34,16 +34,18 @@ export default function AltExcAlimento() {
     };
 
     const handleUpdate = () => {
-        axios.put(`http://localhost:3000/alimentos/${formData.codigo}`, formData)
-            .then(response => {
-                setAlimentos(alimentos.map(alimento => alimento.codigo === formData.codigo ? formData : alimento));
-                setEditingAlimento(null);
-                setFormData({ codigo: '', nome: '', pesoLote: '', dataValidade: '', codFornecedor: '' });
-                setModalVisible(false);
-            })
-            .catch(error => {
-                console.error('Erro ao atualizar alimento:', error);
-            });
+        axios.put(`http://localhost:3000/alimentos`, formData, {
+            params: { codigo: formData.codigo }
+        })
+        .then(response => {
+            setAlimentos(alimentos.map(alimento => alimento.codigo === formData.codigo ? formData : alimento));
+            setEditingFuncionario(null);
+            setFormData({ codigo: '', nome: '', pesoLote: '', dataValidade: '', codFornecedor: '' });
+            setModalVisible(false);
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar funcionário:', error);
+        });
     };
 
     const handleDelete = (codigo) => {
