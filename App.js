@@ -99,6 +99,25 @@ export default function App() {
             },
           }}
         />
+        {/* Tela após o Login */}
+        <Stack.Screen 
+          name="AfterLoginScreen" 
+          component={AfterLoginScreen} 
+          options={{
+            title: "Admin & User",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: 'green', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'green', // Color of the back button text
+            },
+          }}
+        />
         {/* Telas Geral de ADM */}
         <Stack.Screen 
           name="AdminCadAltExc" 
